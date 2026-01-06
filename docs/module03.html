@@ -1,0 +1,1705 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Module 3 – R for Public Health</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-9859ad12c646e21909f796ca9dd1bd29.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="temp_styles.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">R for Public Health</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html#intro"> 
+<span class="menu-text">Introduction</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./module01.html"> 
+<span class="menu-text">Module 1</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./module02.html"> 
+<span class="menu-text">Module 2</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="./module03.html" aria-current="page"> 
+<span class="menu-text">Module 3</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#scenario-update" id="toc-scenario-update" class="nav-link active" data-scroll-target="#scenario-update">Scenario update</a></li>
+  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link" data-scroll-target="#learning-objectives">Learning Objectives</a></li>
+  <li><a href="#part-a-exploring-datasets-and-mapping-out-a-data-collation-plan" id="toc-part-a-exploring-datasets-and-mapping-out-a-data-collation-plan" class="nav-link" data-scroll-target="#part-a-exploring-datasets-and-mapping-out-a-data-collation-plan">Part A: Exploring datasets and mapping out a data collation plan</a>
+  <ul>
+  <li><a href="#abdo-datasets" id="toc-abdo-datasets" class="nav-link" data-scroll-target="#abdo-datasets">Abdo datasets</a></li>
+  <li><a href="#passenger-manifest" id="toc-passenger-manifest" class="nav-link" data-scroll-target="#passenger-manifest">Passenger manifest</a></li>
+  <li><a href="#data-collation-plan" id="toc-data-collation-plan" class="nav-link" data-scroll-target="#data-collation-plan">Data collation plan</a></li>
+  <li><a href="#code-along-for-part-a" id="toc-code-along-for-part-a" class="nav-link" data-scroll-target="#code-along-for-part-a">Code-along for Part A</a>
+  <ul class="collapse">
+  <li><a href="#importing-and-appending-the-abdo-datasets" id="toc-importing-and-appending-the-abdo-datasets" class="nav-link" data-scroll-target="#importing-and-appending-the-abdo-datasets">Importing and appending the Abdo datasets</a></li>
+  <li><a href="#importing-the-passenger-manifest" id="toc-importing-the-passenger-manifest" class="nav-link" data-scroll-target="#importing-the-passenger-manifest">Importing the passenger manifest</a></li>
+  <li><a href="#deciding-on-a-join-type-to-combine-the-two-datasets" id="toc-deciding-on-a-join-type-to-combine-the-two-datasets" class="nav-link" data-scroll-target="#deciding-on-a-join-type-to-combine-the-two-datasets">Deciding on a join type to combine the two datasets</a></li>
+  <li><a href="#joining-the-final-abdo-and-passenger-manifest-datasets" id="toc-joining-the-final-abdo-and-passenger-manifest-datasets" class="nav-link" data-scroll-target="#joining-the-final-abdo-and-passenger-manifest-datasets">Joining the final abdo and passenger manifest datasets</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#part-b-separating-pivoting-and-rejoining-data" id="toc-part-b-separating-pivoting-and-rejoining-data" class="nav-link" data-scroll-target="#part-b-separating-pivoting-and-rejoining-data">Part B: Separating, pivoting, and rejoining data</a>
+  <ul>
+  <li><a href="#converting-the-cedis-variable-into-useful-symptom-data" id="toc-converting-the-cedis-variable-into-useful-symptom-data" class="nav-link" data-scroll-target="#converting-the-cedis-variable-into-useful-symptom-data">Converting the CEDIS variable into useful symptom data</a></li>
+  <li><a href="#planning-our-approach" id="toc-planning-our-approach" class="nav-link" data-scroll-target="#planning-our-approach">Planning our approach</a></li>
+  <li><a href="#code-along-for-part-b" id="toc-code-along-for-part-b" class="nav-link" data-scroll-target="#code-along-for-part-b">Code-along for Part B</a>
+  <ul class="collapse">
+  <li><a href="#apply-separate_rows" id="toc-apply-separate_rows" class="nav-link" data-scroll-target="#apply-separate_rows">Apply separate_rows()</a></li>
+  <li><a href="#apply-pivot_wider" id="toc-apply-pivot_wider" class="nav-link" data-scroll-target="#apply-pivot_wider">Apply pivot_wider()</a></li>
+  <li><a href="#rename-variables" id="toc-rename-variables" class="nav-link" data-scroll-target="#rename-variables">Rename() variables</a></li>
+  <li><a href="#join-with-main-dataset" id="toc-join-with-main-dataset" class="nav-link" data-scroll-target="#join-with-main-dataset">Join() with main dataset</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#part-c-youre-an-epidemiologist-remember" id="toc-part-c-youre-an-epidemiologist-remember" class="nav-link" data-scroll-target="#part-c-youre-an-epidemiologist-remember">Part C: You’re an epidemiologist, remember?</a>
+  <ul>
+  <li><a href="#mean-median-and-range-of-ages" id="toc-mean-median-and-range-of-ages" class="nav-link" data-scroll-target="#mean-median-and-range-of-ages">Mean, median and range of ages</a></li>
+  <li><a href="#number-and-proportions-of-female-vs.-male-cases" id="toc-number-and-proportions-of-female-vs.-male-cases" class="nav-link" data-scroll-target="#number-and-proportions-of-female-vs.-male-cases">Number and proportions of female vs.&nbsp;male cases</a></li>
+  <li><a href="#cases-reporting-with-fever" id="toc-cases-reporting-with-fever" class="nav-link" data-scroll-target="#cases-reporting-with-fever">Cases reporting with Fever</a></li>
+  <li><a href="#symptom-onset-dates" id="toc-symptom-onset-dates" class="nav-link" data-scroll-target="#symptom-onset-dates">Symptom onset dates</a></li>
+  <li><a href="#further-exploring-the-dataset" id="toc-further-exploring-the-dataset" class="nav-link" data-scroll-target="#further-exploring-the-dataset">Further exploring the dataset</a>
+  <ul class="collapse">
+  <li><a href="#differences-in-symptoms-by-onset-date" id="toc-differences-in-symptoms-by-onset-date" class="nav-link" data-scroll-target="#differences-in-symptoms-by-onset-date">Differences in symptoms by onset date</a></li>
+  <li><a href="#differences-in-symptoms-by-other-variables" id="toc-differences-in-symptoms-by-other-variables" class="nav-link" data-scroll-target="#differences-in-symptoms-by-other-variables">Differences in symptoms by other variables</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#summary-and-quiz" id="toc-summary-and-quiz" class="nav-link" data-scroll-target="#summary-and-quiz">Summary and quiz</a>
+  <ul>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
+  <li><a href="#quiz" id="toc-quiz" class="nav-link" data-scroll-target="#quiz">Quiz</a></li>
+  </ul></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="module03.docx"><i class="bi bi-file-word"></i>MS Word</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Module 3</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Welcome back!</p>
+<p>So far in the course, we’ve gotten used to navigating our datasets using Tidyverse functions.</p>
+<p>In this module, we’ll be practicing another critical skill: working with multiple datasets!</p>
+<section id="scenario-update" class="level2">
+<h2 class="anchored" data-anchor-id="scenario-update">Scenario update</h2>
+<p>Blarney! It’s a good thing that D.N.P. cruise-lines thought to hire an epidemiologist for their voyage! Passengers with symptoms of abdominal pain or worse have been reporting to the ship’s infirmary like crabs to catfood! Something isn’t sitting well on this boat, and you’ve got a sneaky suspicion that you might be facing an on-board outbreak.</p>
+<p>You can’t make bricks without clay, however, and we cannot make conclusions without evidence. We’ll need to do some basic epidemiology to assess if there are any commonalities between the sick passengers before we can report our recommendations to the captain.</p>
+<p>Thankfully, the ship’s nurse has been quite co-operative and provided you with the records of individuals that have reported to the infirmary over the last few days. Upon opening the email and giving it a quick scan, however, you realize that <em>none of the demographic information</em> (e.g., age, sex) has been included in the data. In fact, it turns out that the nurse aboard the S.S. Rainbow Cake takes <em>personal data confidentiality</em> VERY SERIOUSLY, and passenger names aren’t even included!</p>
+<p>Instead of names, passenger health data have been coded to use a personal identification number (PIN). Lucky for us, the nurse keeps a copy of the ship’s manifest, and recorded a PIN for each passenger, but these datasets are separate, and you’ll need to find a way to combine them in order to figure out who’s who! Good thing you’ve been practicing data appends and joins!</p>
+</section>
+<section id="learning-objectives" class="level2">
+<h2 class="anchored" data-anchor-id="learning-objectives">Learning Objectives</h2>
+<p>By the end of Module 3, you will be able to</p>
+<ol type="1">
+<li>Describe your plan for combining multiple datasets together.</li>
+<li>Combine multiple datasets using Tidyverse syntax.</li>
+<li>Explain use-cases for several different types of data-join operations.</li>
+</ol>
+</section>
+<section id="part-a-exploring-datasets-and-mapping-out-a-data-collation-plan" class="level2">
+<h2 class="anchored" data-anchor-id="part-a-exploring-datasets-and-mapping-out-a-data-collation-plan">Part A: Exploring datasets and mapping out a data collation plan</h2>
+<p>In this module, you’ve been given several datasets that you’ll want to combine in order to calculate some summaries.</p>
+<p>First, however, you’ll need to review what data you’ve been provided with, and formulate a strategy for combining datasets in a way that makes most sense for the types of analyses you’ll want to do.</p>
+<section id="abdo-datasets" class="level3">
+<h3 class="anchored" data-anchor-id="abdo-datasets">Abdo datasets</h3>
+<p>In your <strong>Module3</strong> datsets folder you should see the following files, that correspond to data extracts related to passengers with abdominal pain complaints:</p>
+<blockquote class="blockquote">
+<p><strong>abdo_Feb10.tsv</strong></p>
+<p><strong>abdo_Feb11.tsv</strong></p>
+<p><strong>abdo_Feb12.tsv</strong></p>
+<p><strong>abdo_Feb13.tsv</strong></p>
+<p><strong>abdo_Feb14.tsv</strong></p>
+</blockquote>
+<p>Each of the <strong>abdo_</strong> files are formatted the same way and contain data collected on a single date. These files were extracted from the infirmary’s database, and contain several rows of metadata at the top of the file that you’ll want to filter out. They also all contain the following variables:</p>
+<table class="caption-top table">
+<caption>Data dictionary for data extracts from the ship infirmary</caption>
+<colgroup>
+<col style="width: 30%">
+<col style="width: 69%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Pass_ID</td>
+<td>Unique identifier given to ship passengers</td>
+</tr>
+<tr class="even">
+<td>Recorded temperature</td>
+<td>Oral temperature taken during medical visit (degrees celsius)</td>
+</tr>
+<tr class="odd">
+<td>Recorded height</td>
+<td>Passenger height measurements taken during medical visit (cm)</td>
+</tr>
+<tr class="even">
+<td>Recorded weight</td>
+<td>Passenger weight measurement taken during medical visit (kg)</td>
+</tr>
+<tr class="odd">
+<td>CEDIS</td>
+<td>CEDIS Chief complaint code, input by nurse at check-in (see additional handout)</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="passenger-manifest" class="level3">
+<h3 class="anchored" data-anchor-id="passenger-manifest">Passenger manifest</h3>
+<p>The ship’s nurse has also provided you with a copy of their passenger manifest - which thankfully has the Pass_ID included, as well as the demographic information you’ll need to summarize the epidemiology of passengers experiencing symptoms of illness.</p>
+<p>Also - lucky us, it seems as though the ship’s infirmary does a <strong>much</strong> better job of maintaining the passenger manifest as well! So we shouldn’t have to worry about cleaning it a second time. There are, however, more variables than we really need for answering our questions about who is getting sick - so we’ll want to focus just on the variables pertinent to our analysis. Lets focus on keeping the following:</p>
+<table class="caption-top table">
+<caption>Variables to keep from the passenger manifest</caption>
+<colgroup>
+<col style="width: 29%">
+<col style="width: 70%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Pass_ID</td>
+<td>The unique identifier given to each passenger by the crew of the S. S. Rainbow Cake.</td>
+</tr>
+<tr class="even">
+<td>Age</td>
+<td>Age of the passenger at the time of the cruise departure.</td>
+</tr>
+<tr class="odd">
+<td>Gender</td>
+<td>Reported gender of the passenger.</td>
+</tr>
+<tr class="even">
+<td>Member status</td>
+<td>Which tier of rewards member. May determine access to different amenities or food items.</td>
+</tr>
+<tr class="odd">
+<td>Boarding date</td>
+<td>What date the passenger boarded the cruise ship.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="data-collation-plan" class="level3">
+<h3 class="anchored" data-anchor-id="data-collation-plan">Data collation plan</h3>
+<p>Now that we have an idea about what our datasets will look like, we should sketch out a strategy for how our data sets can be joined together. Starting with our <strong>abdo</strong> datasets: these are all in the same format, but separated out for each day. We’ll want to <strong>append</strong> these datasets together, and <strong>create a new variable</strong> to indicate what the date was that the symptoms were reported.</p>
+<p>For our append operation, we’ll be using the following function:</p>
+<blockquote class="blockquote">
+<p><code>bind_rows(dataset1, dataset2, etc..., .id = "id")</code></p>
+</blockquote>
+<p>Simply, bind_rows will combine our data by stacking the rows on top of each other. Its important to ensure that all the column names are consistent, otherwise we’ll get a messy bunch of rows with mostly NA’s in them.</p>
+<p>The argument .id=“id” will produce a new column that contains a character string of the filename. This will then let us identify which observations were recorded on each day, and we can then <strong>mutate()</strong> a new column based on this to represent the onset date.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="pics/module3_dataflow01.jpg" class="img-fluid figure-img" alt="A simple data-flow diagram showing five data sets combining into one."></p>
+<figcaption>Using bind_row() to append the abdo datasets into one.</figcaption>
+</figure>
+</div>
+<p>Once we have a working <strong>abdo dataset</strong> in place, we can turn our attention to the <strong>passenger manifest file</strong>. This manifest has already been cleaned by the ship’s staff, and contains the unique passenger ID variable that we can use as a key variable. The dataset is, however, still saved as an Excel workbook, and contains the messy header and extraneous variables - so you’ll need to revisit how we imported this properly in Module 1 if you’ve forgotten, and then select the variables to keep from the table above. When that’s done, we’ll join the two tables together with the key variable.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="pics/module3_dataflow02.jpg" class="img-fluid figure-img"></p>
+<figcaption>Collating abdo and manifest datasets using table join</figcaption>
+</figure>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Make sure that you think about what table join is the most appropriate for the end result you’re hoping to achieve! Also, the <strong>order</strong> that you specify the tables matters with some table joins! If you need help remembering how each of the different join types work, refer to the references on <a href="https://dplyr.tidyverse.org/articles/two-table.html?q=filtering%20joins#mutating-joins" title="Link to dplyr mutate joins">mutating joins</a> and <a href="https://dplyr.tidyverse.org/articles/two-table.html?q=filtering%20joins#filtering-joins" title="A link to dplyr filtering joins">filtering joins</a>!</p>
+</div>
+</div>
+</section>
+<section id="code-along-for-part-a" class="level3">
+<h3 class="anchored" data-anchor-id="code-along-for-part-a">Code-along for Part A</h3>
+<p>If you’re feeling confident, then we encourage you to try establishing the code yourself for this exercise. However, we’ve provided the code that we used below. Remember, there’s always multiple ways to accomplish the same thing, so don’t worry if your code doesn’t always match what we’ve done!</p>
+<section id="importing-and-appending-the-abdo-datasets" class="level4">
+<h4 class="anchored" data-anchor-id="importing-and-appending-the-abdo-datasets">Importing and appending the Abdo datasets</h4>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Load required libraries</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># library(pacman)</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># p_load(tidyverse)</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># create a vector to store consistent and simple variable names for abdo datasets</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>abdo_names <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"pass.ID"</span>, <span class="st">"pass.temp"</span>, <span class="st">"pass.height"</span>, <span class="st">"pass.weight"</span>, <span class="st">"CEDIS"</span>)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># load abdo datasets using read_tsv from the readr tidyverse package: </span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>abdo_feb10 <span class="ot">&lt;-</span> <span class="fu">read_tsv</span>(<span class="st">"participant_data/module3/abdo_Feb10.txt"</span>, <span class="at">col_names =</span> abdo_names, <span class="at">skip =</span> <span class="dv">4</span>)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>abdo_feb11 <span class="ot">&lt;-</span> <span class="fu">read_tsv</span>(<span class="st">"participant_data/module3/abdo_Feb11.txt"</span>, <span class="at">col_names =</span> abdo_names, <span class="at">skip =</span> <span class="dv">4</span>)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>abdo_feb12 <span class="ot">&lt;-</span> <span class="fu">read_tsv</span>(<span class="st">"participant_data/module3/abdo_Feb12.txt"</span>, <span class="at">col_names =</span> abdo_names, <span class="at">skip =</span> <span class="dv">4</span>)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>abdo_feb13 <span class="ot">&lt;-</span> <span class="fu">read_tsv</span>(<span class="st">"participant_data/module3/abdo_Feb13.txt"</span>, <span class="at">col_names =</span> abdo_names, <span class="at">skip =</span> <span class="dv">4</span>)</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>abdo_feb14 <span class="ot">&lt;-</span> <span class="fu">read_tsv</span>(<span class="st">"participant_data/module3/abdo_Feb14.txt"</span>, <span class="at">col_names =</span> abdo_names, <span class="at">skip =</span> <span class="dv">4</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Great! Notice that we used skip = 4 to remove the header row, since we’ve stipulated our own headers in the abdo_names vector.</p>
+<p>Next, let’s append these datasets together using the <strong>bind_rows()</strong> function.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>abdo_combined <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(abdo_feb10,</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>                           abdo_feb11,</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>                           abdo_feb12,</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>                           abdo_feb13,</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>                           abdo_feb14,</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>                           <span class="at">.id =</span> <span class="st">"id"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Now that we have our combined abdo dataset, we can go ahead and mutate a new column based off our ‘id’ variable that was created when we used bind_rows. For this, we’ll revisit the case_when and ymd functions as well from Module 1.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>abdo_combined_onset <span class="ot">&lt;-</span> </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>abdo_combined <span class="sc">%&gt;%</span> </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">onset.date =</span> <span class="fu">case_when</span>(</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    id <span class="sc">==</span> <span class="st">"1"</span> <span class="sc">~</span> <span class="fu">ymd</span>(<span class="st">'2025-02-10'</span>),</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    id <span class="sc">==</span> <span class="st">"2"</span> <span class="sc">~</span> <span class="fu">ymd</span>(<span class="st">'2025-02-11'</span>),</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    id <span class="sc">==</span> <span class="st">"3"</span> <span class="sc">~</span> <span class="fu">ymd</span>(<span class="st">'2025-02-12'</span>),</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    id <span class="sc">==</span> <span class="st">"4"</span> <span class="sc">~</span> <span class="fu">ymd</span>(<span class="st">'2025-02-13'</span>),</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    id <span class="sc">==</span> <span class="st">"5"</span> <span class="sc">~</span> <span class="fu">ymd</span>(<span class="st">'2025-02-14'</span>)</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  ))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Now we can drop the “id” variable from our abdo_combined_onset dataset, and proceed to joining this dataset with our passenger manifest.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>abdo_combined_onset <span class="ot">&lt;-</span> </span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  abdo_combined_onset <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>id)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Before moving onto the passenger manifest, however, let’s clean up our workspace and remove the temporary objects that we created up till now.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(abdo_combined, abdo_feb10, abdo_feb11, abdo_feb12, abdo_feb13, abdo_feb14, abdo_names)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Great - we should be just left with the <strong>abdo_combined_onset</strong> object in your work session now.</p>
+</section>
+<section id="importing-the-passenger-manifest" class="level4">
+<h4 class="anchored" data-anchor-id="importing-the-passenger-manifest">Importing the passenger manifest</h4>
+<p>Now that we have our abdo dataset all ready to go, we can turn our attention to the updated passenger manifest file. In your Module 3 data folder, you should find the following file:</p>
+<blockquote class="blockquote">
+<p>pass_manifest.xlsx</p>
+</blockquote>
+<p>First, open this file in Excel and give it a look-through. It should look very familiar to the manifest that you worked on in Module 1, but the data cleaning issues identified in Module 1 have been cleaned up and the passenger ID variable has been added. Remember, you’ll still need to remove the header while importing this file!</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import the dataset using readxl</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Note the readxl::read_excel allows for you to access functions from installed </span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># packages without loading the entire package. </span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>pass_manifest <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="st">"participant_data/module3/pass_manifest.xlsx"</span>, </span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>                            <span class="at">skip =</span> <span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Now, recall earlier that we determined that we didn’t need to keep all of the data from the passenger manifest, so let’s use the select() function to choose only the variables that we want to keep.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>pass_manifest_trunc <span class="ot">&lt;-</span> <span class="co">#truncated, temporary object</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>pass_manifest <span class="sc">%&gt;%</span> </span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Note that we wrap variables with spaces in a back-tick</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Pass_ID, Age, Gender, <span class="st">`</span><span class="at">Member Status</span><span class="st">`</span>, <span class="st">`</span><span class="at">Boarding Date</span><span class="st">`</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>We should have everything we need now to join these two datasets together!</p>
+</section>
+<section id="deciding-on-a-join-type-to-combine-the-two-datasets" class="level4">
+<h4 class="anchored" data-anchor-id="deciding-on-a-join-type-to-combine-the-two-datasets">Deciding on a join type to combine the two datasets</h4>
+<p>Now that we’re at the stage where we will actually join these datasets together, we need to carefully consider which join type we’ll want to use. Remember that there are both mutating joins - which change the data, but don’t drop observations, and filtering joins, which DO drop observations.</p>
+<p>To help you decide which join you want - think through the following questions:</p>
+<ol type="1">
+<li>What question are you ultimately trying to answer?</li>
+<li>Do you <em>need</em> all the data from both datasets?</li>
+<li>Which dataset contains the observations most important to you, and which dataset contains the supplementary information you’re trying to add?</li>
+</ol>
+<details>
+<summary>
+<strong>Click to see our decision and reasoning</strong>
+</summary>
+<p>For this operation, we decided that a <strong>left_join</strong> would work best!</p>
+<ul>
+<li><p>A left join (<strong>left_join()</strong>) keeps all rows from the left (first) data frame, and adds matching columns from the right data frame based on the join key(s).</p></li>
+<li><p>If a row in the left data frame has no matching key in the right, the new columns are filled with NA.</p></li>
+<li><p>Rows in the right data frame that don’t match any left-side keys are dropped and do not appear in the result.</p></li>
+<li><p>Since we’re interested in the cases reporting abdominal symptoms primarily, and we’re looking to add supplementary demographic data, the left join makes the most sense, and keeps the results nice and tidy for us, without any extras.</p></li>
+</ul>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Don’t forget that the order of tables matters when invoking <strong>left_join()</strong>.</p>
+</div>
+</div>
+</details>
+</section>
+<section id="joining-the-final-abdo-and-passenger-manifest-datasets" class="level4">
+<h4 class="anchored" data-anchor-id="joining-the-final-abdo-and-passenger-manifest-datasets">Joining the final abdo and passenger manifest datasets</h4>
+<p>This is it! We’ve made it to the step where we finally get to join these datasets together into one, using the join type that we decided upon. Let’s take a quick look at the syntax for left_join().</p>
+<blockquote class="blockquote">
+<p><code>left_join(x, y, by = ...)</code></p>
+</blockquote>
+<ul>
+<li><em>x</em> is the table for which all the rows will be kept</li>
+<li><em>y</em> is the table that you want to <em>add data</em> from</li>
+<li><em>by</em> is an optional argument that specifies the key value to join the datasets on. Since we have “pass.ID” in the abdo dataset, and “Pass_ID” in the manifest, we have to let R know that these are common variables between the two tables.</li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Time to join these datasets together! </span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>abdo_manifest <span class="ot">&lt;-</span> <span class="fu">left_join</span>(abdo_combined_onset, pass_manifest_trunc, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"pass.ID"</span> <span class="ot">=</span> <span class="st">"Pass_ID"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+</section>
+</section>
+<section id="part-b-separating-pivoting-and-rejoining-data" class="level2">
+<h2 class="anchored" data-anchor-id="part-b-separating-pivoting-and-rejoining-data">Part B: Separating, pivoting, and rejoining data</h2>
+<p>Let’s recap where we’re at so far:</p>
+<ol type="1">
+<li>According to our abdo_manifest dataset, as of Feb 14th, we have 69 passengers aboard the S.S. Rainbow Cake who have fallen ill, reporting symptoms of abdominal pain or worse.</li>
+<li>We have established onset dates for each of the ill passengers by appending the individual abdo datasets together and establishing the date that they reported to the ship infirmary as a variable in our dataset.</li>
+<li>By joining the combined abdo dataset with a version of the passenger manifest that has a unique identifier assigned to each passenger, we were able to securely import demographic variables and attach them to the appropriate passengers.</li>
+</ol>
+<p>Recall the reason that we completed these steps was so that we could produce some epidemiological summaries about the sick passengers, and establish whether or not there may be commonalities between symptoms and some characteristics about the individuals.</p>
+<p>At present, we have our dataset of cases who reported at least abdominal pain, we’ve established their onsets from the reporting date, and we’ve joined our data with the demographic variables present from the passenger manifest!</p>
+<p>Now it’s time that we address the manatee-in-the-room: the CEDIS variable! All of our symptom data are actually being stored in this one variable, coded using the <strong>Canadian Emergency Department Information Systems</strong> approach! Nurse Hookhand has once again shown her flair for data management!</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Did you know
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The Canadian Emergency Department Information System (CEDIS) is a Canadian initiative to provide a systematic approach to data collection across hospital emergency departments nation-wide. The system was established through a collaborative, consensus based approach, and included input from hospital nurses, administrators, and researchers all across Canada. The goals of the approach were to create a system of systematically capturing and categorizing chief complaints in emergency departments and triage settings to facilitate clinical care, research and emergency department management with a specific, Canadian healthcare-system context.</p>
+<p>Cool facts about CEDIS:</p>
+<ul>
+<li><p>CEDIS presenting complaint data are commonly used for syndromic surveillance systems (e.g., in Yukon, Yukon’s ED-SyS uses CEDIS codes from real-time ED data).</p></li>
+<li><p>Public health applications often rely on presenting complaints because they are completed promptly at triage, whereas discharge diagnosis codes may lag or be incomplete. Evidence from BC COVID-19 ED use analysis notes that CEDIS presenting complaints often have more complete coverage and are used for surveillance.</p></li>
+<li><p>CEDIS is integrated into NACRS for national reporting, enabling linking to other health administrative data.</p></li>
+</ul>
+<p><strong>References</strong></p>
+<p>Innes G, Murray M, Grafstein E. A consensus-based process to define standard national data elements for a canadian emergency department information system.&nbsp;<em>Canadian Journal of Emergency Medicine</em>. 2001;3(4):277-283. doi:10.1017/S1481803500005777</p>
+<p>Bouchouar E, Hetman BM, Hanley B. Development and validation of an automated emergency department-based syndromic surveillance system to enhance public health surveillance in Yukon: a lower-resourced and remote setting. BMC Public Health. 2021 Jun 29;21(1):1247. doi: 10.1186/s12889-021-11132-w. PMID: 34187423; PMCID: PMC8240073.</p>
+<p>Yao, J., Irvine, M. A., Klaver, B., Zandy, M., Dheri, A. K., Grafstein, E., &amp; Smolina, K. (2023). Changes in emergency department use in British Columbia, Canada, during the first 3 years of the COVID-19 pandemic. <em>CMAJ</em>, <em>195</em>(34), E1141–E1150. https://doi.org/10.1503/cmaj.221516</p>
+<p>Canadian Institute for Health Information. (2025). National Ambulatory Care Reporting System (NACRS) metadata. https://www.cihi.ca/en/national-ambulatory-care-reporting-system-nacrs-metadata</p>
+<p>Canadian Association of Emergency Physicians. (n.d.). Canadian Emergency Department Information System (CEDIS). https://caep.ca/resources/cedis/</p>
+</div>
+</div>
+<section id="converting-the-cedis-variable-into-useful-symptom-data" class="level3">
+<h3 class="anchored" data-anchor-id="converting-the-cedis-variable-into-useful-symptom-data">Converting the CEDIS variable into useful symptom data</h3>
+<p>While there is undoubtedly rich information contained in the CEDIS variable, we’re going to have to think through what type of operations we’ll need to extract and use the information provided. Let’s list some considerations below.</p>
+<ol type="1">
+<li><p>CEDIS codes are stored as 3-digit numbers. We have provided a PDF of the numeric translation in the folder for Module 3. You will need to translate the codes into the symptoms they represent in order to make sense of the data and summarize the reported symptoms.</p></li>
+<li><p>Codes are stored in a single variable, and multiple codes have been separated by a semi-colon. We’ll need to separate these out first into separate variables to facilitate using them in summaries.</p></li>
+<li><p>Not everyone reported the same number of symptoms, so whatever we do for the step above needs to ensure that the correct symptom code is reported to the correct variable, and only that variable.</p></li>
+</ol>
+<p>We’ll start by tackling steps 2 and 3 first, then go back and figure out step 1.</p>
+</section>
+<section id="planning-our-approach" class="level3">
+<h3 class="anchored" data-anchor-id="planning-our-approach">Planning our approach</h3>
+<p>Tidyverse has some very useful functions that will enable us to separate out values from our CEDIS value and redistribute them into their own variables. We’ll walk through and explain some example code here - but as always, feel free to skip ahead and attempt to figure out the coding on your own if you feel comfortable doing so! There are more sophisticated and quicker ways to perform the operations than what we’ll show here, so if you have a better way to get the same results with the CEDIS data, please do so!!</p>
+<p>Conceptually the approach that we’ll take will follow something like this:</p>
+<ol type="1">
+<li>We’ll start by working with a simplified subset of our data that only includes the passenger ID (<strong>pass.ID</strong>) and the <strong>CEDIS</strong> variables.</li>
+<li>We’ll turn each <strong>pass.ID</strong> x <strong>CEDIS</strong> code into a separate row (i.e., multiple rows per individual, with only one CEDIS code present in the CEDIS variable) using the <strong>separate_rows()</strong> function.</li>
+<li>We’ll then use the <strong>pivot_wider()</strong> function to stretch the CEDIS data from long-format into wide-format.</li>
+<li>We’ll rename the variables based on the associated symptoms.</li>
+<li>Finally we’ll re-join these data back to our original table.</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="pics/module3_dataflow03.jpg" class="img-fluid figure-img" alt="A diagram showing multiple tables resulting from data manipulation"></p>
+<figcaption>Data flow diagram for working with the CEDIS variable</figcaption>
+</figure>
+</div>
+</section>
+<section id="code-along-for-part-b" class="level3">
+<h3 class="anchored" data-anchor-id="code-along-for-part-b">Code-along for Part B</h3>
+<p>First, we’ll start by saving a temporary subset of our abdo-manifest object that contains only the pass.ID and CEDIS variables. This will help to ensure that we don’t mistakenly manipulate other variables in our dataset accidentally.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>CEDIS_subset <span class="ot">&lt;-</span> abdo_manifest <span class="sc">%&gt;%</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(pass.ID, CEDIS)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<section id="apply-separate_rows" class="level4">
+<h4 class="anchored" data-anchor-id="apply-separate_rows">Apply separate_rows()</h4>
+<p>Easy enough, next, let’s check out the arguments we’ll need to specify in the <strong>separate_rows()</strong> function:</p>
+<blockquote class="blockquote">
+<p>separate_rows(data, … , sep, convert)</p>
+</blockquote>
+<ul>
+<li><p>data = the data frame we want to modify (this is already handled with the %&gt;% operator)</p></li>
+<li><p>… = tidy-select columns we want to target</p></li>
+<li><p>sep = the character used to separate the values we want to split up (e.g., “;”)</p></li>
+<li><p>convert = (T/F) this tells R whether or not we want to convert the resulting columns into whatever class the individual values are. For example, the CEDIS variable is presently stored as a character string because it mixes both numeric and character values. If we set convert = T, then the separated CEDIS codes will be treated as numeric, and if we set convert = F, then they’ll stay as characters.</p></li>
+</ul>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Note: the Tidyverse team has marked <strong>separate_rows()</strong> as end of lifecycle / deprecated. This doesn’t mean that the function won’t continue to work, but it does mean that the team will not continue to update it. The function that is intended to replace it is called <strong>separate_longer_delim()</strong>, however, it is still in experimental status, so we won’t official move to that one until a later time.</p>
+</div>
+</div>
+<p>Let’s hit the CEDIS variable with our separate_rows() function and see what we get!</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>CEDIS_subset_long <span class="ot">&lt;-</span> </span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>CEDIS_subset <span class="sc">%&gt;%</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate_rows</span>(CEDIS, <span class="at">sep =</span> <span class="st">';'</span>, <span class="at">convert =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co">#view(CEDIS_subset_long)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="apply-pivot_wider" class="level4">
+<h4 class="anchored" data-anchor-id="apply-pivot_wider">Apply pivot_wider()</h4>
+<p>Now we can use the pivot_wider() function to create new variables based on the values present in the CEDIS variable.</p>
+<blockquote class="blockquote">
+<p><code>pivot_wider(id_cols, names_from, values_from, values_fill)</code></p>
+</blockquote>
+<ul>
+<li>id_cols = the key or identity variable, in this case, pass.ID</li>
+<li>names_from = the variable containing the names that will be used for new variables</li>
+<li>values_from = the variable that contains the data you want to use to fill in under the new variable headings</li>
+<li>values_fill = a ‘fill’ value to be used to fill in the missing observations (e.g., 0, NA, etc.)</li>
+</ul>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Note: <strong>pivot_wider()</strong> assumes that each combination of the <em>id_cols</em> and <em>names_from</em> variables is unique. If duplicates exist in your dataset (e.g., two instances of pass.ID = 001 and CEDIS = 251), you must specify a function using values_fn() to define how those duplicate values should be handled (e.g., <strong>max</strong> for presence/absence, <strong>sum</strong> for counts).</p>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>CEDIS_subset_wide <span class="ot">&lt;-</span> </span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>CEDIS_subset_long <span class="sc">%&gt;%</span> </span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">value =</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">id_cols =</span> pass.ID,</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>              <span class="at">names_from =</span> CEDIS,</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>              <span class="at">values_from =</span> value,</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>              <span class="at">values_fill =</span> <span class="dv">0</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="rename-variables" class="level4">
+<h4 class="anchored" data-anchor-id="rename-variables">Rename() variables</h4>
+<p>On to the easy part! We now just have to rename the CEDIS codes into useful variable names!</p>
+<p>Take a few minutes to review the CEDIS table that was provided in your participant folder and note down the symptoms that correspond with each of the codes.</p>
+<details>
+<summary>
+<strong>Click to see the codes</strong>
+</summary>
+<p>Just kidding! You didn’t think we’d do all the work for you, did you?</p>
+<p>Take a break from your RStudio console and give the PDF a quick read, you should be easily able to find the symptoms that correspond to the following CEDIS codes:</p>
+<ul>
+<li>251</li>
+<li>254</li>
+<li>257</li>
+<li>260</li>
+<li>404</li>
+</ul>
+</details>
+<div class="callout-info">
+<p>Need a short brain-break? Every thought about the differences between R and Python? <a href="https://youtu.be/mVzDPxKagxk?si=rJ9qpjkkFkiqDk8d" title="Hadley Wickham on R versus Python">Here’s a short video where Posit’s Chief Data Scientist, Dr.&nbsp;Hadley Wickham, talks about R versus Python.</a></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="pics/module03_RvsPython.jpg" class="img-fluid figure-img" alt="An image featuring the branding logos of R and Python coding software"></p>
+<figcaption>R versus Python - more alike than different!</figcaption>
+</figure>
+</div>
+</div>
+<p>Ok - on to the coding step. If you <strong><em>still</em></strong> haven’t looked up the codes at this point - then follow along and see how we decided to rename the variables.</p>
+<p>The rename() function allows you to specify exactly which variables you want to rename, and uses a “new.name” = “old.name” syntax. When you’re working with more complex datasets, or in the middle of a series of operations, its generally much safer to rename variables this way.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>symptoms_table <span class="ot">&lt;-</span> </span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>CEDIS_subset_wide <span class="sc">%&gt;%</span> </span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="st">"abdo.pain"</span> <span class="ot">=</span> <span class="st">"251"</span>,</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>         <span class="st">"vomiting"</span> <span class="ot">=</span> <span class="st">"257"</span>,</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>         <span class="st">"diarrhea"</span> <span class="ot">=</span> <span class="st">"254"</span>,</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>         <span class="st">"bloody.stool"</span> <span class="ot">=</span> <span class="st">"260"</span>,</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>         <span class="st">"headache"</span> <span class="ot">=</span> <span class="st">"404"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="join-with-main-dataset" class="level4">
+<h4 class="anchored" data-anchor-id="join-with-main-dataset">Join() with main dataset</h4>
+<p>Finally it’s time to join our symptoms data back with our main manifest!</p>
+<p>Let’s go ahead and re-unite these data, using the pass.ID as the key variable! Note that this time, since the key variable is named the same in both datasets, we don’t actually need to specify the variable in our list of function arguments.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>symptoms_manifest <span class="ot">&lt;-</span> <span class="fu">full_join</span>(symptoms_table, abdo_manifest)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove all but the specified objects from memory</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="co">#rm(rm(list = setdiff(ls(), c("symptoms_manifest"))))</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Review your symptoms manifest object to ensure that everything looks in order. Once that’s finished, clean up your workspace, removing any of your temporary/intermediate data objects.</p>
+</section>
+</section>
+</section>
+<section id="part-c-youre-an-epidemiologist-remember" class="level2">
+<h2 class="anchored" data-anchor-id="part-c-youre-an-epidemiologist-remember">Part C: You’re an epidemiologist, remember?</h2>
+<p>Alright - up until now we’ve focused primarily on cleaning and manipulating data, which are <em>essential</em>&nbsp;skills for an epidemiologist to have. However, you were hired aboard the <strong>S. S. Rainbow Cake</strong> because you’re an epidemiologist and are trained to think about how data are used to solve public health issues, so let’s turn our focus now to exploring what are our data are telling us.</p>
+<p>We need a tool to help turn our observations into meaningful summaries, and the summarize() family of functions will provide just that!</p>
+<p>The <strong>summarize()</strong> function takes your specified data and summary functions (e.g., sum, mean, median, max, min, etc.) as input, and outputs a new data frame with the results stored as variables. The syntax should look fairly familiar at this point.</p>
+<p>e.g.,</p>
+<blockquote class="blockquote">
+<p><code>data %&gt;% summarize(</code></p>
+<p><code>summary_mean = mean(variable),</code></p>
+<p><code>summary_median = median(variable),</code></p>
+<p><code>summary_example3 = some.function(variable),</code></p>
+<p><code>etc.</code></p>
+<p><code>)</code></p>
+</blockquote>
+<p>A very useful supplement to summarize() functions is the ability to group your data prior to the summaries being calculated. This allows you to create a summary of one variable for each level of another variable. E.g., calculating the median age for females and males separately.</p>
+<p>You can group variables in one of two ways.</p>
+<ol type="1">
+<li>Using the <code>.by =</code> argument inside the summarize() function. E.g., adding <code>.by = Gender</code> will split your data into groups of males and females only before carrying out the summary function indicated.</li>
+<li>Using group_by() before invoking summarize() in your tidyverse pipe operations. E.g.,</li>
+</ol>
+<blockquote class="blockquote">
+<p><code>data %&gt;%</code></p>
+<p><code>group_by(grouping.variable) %&gt;%</code></p>
+<p><code>summarize(mean = mean(summary.variable),</code></p>
+<p><code>median = median(summary.variable),</code></p>
+<p><code>etc.)</code></p>
+</blockquote>
+<p>Let’s list some summaries that we may be interested in, then work up an example using summarize().</p>
+<p><strong>Simple statistics to summarize:</strong></p>
+<ol type="1">
+<li><p>Mean, median and range of ages for all cases</p></li>
+<li><p>Numbers of total male and female cases</p></li>
+<li><p>Numbers of passengers with fever (e.g., &gt; 38 degrees Celsius)</p></li>
+<li><p>Total numbers of cases reporting</p>
+<ul>
+<li><p>Vomiting</p></li>
+<li><p>Diarrhea</p></li>
+<li><p>Headache</p></li>
+<li><p>Bloody stool</p></li>
+</ul></li>
+</ol>
+<section id="mean-median-and-range-of-ages" class="level4">
+<h4 class="anchored" data-anchor-id="mean-median-and-range-of-ages">Mean, median and range of ages</h4>
+<p>Let’s first look at a description of cases in the data:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>symptoms_manifest <span class="sc">%&gt;%</span> </span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">.by =</span> Gender,</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_age   =</span> <span class="fu">mean</span>(Age, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">median_age =</span> <span class="fu">median</span>(Age, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">max_age    =</span> <span class="fu">min</span>(Age, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">min_age    =</span> <span class="fu">max</span>(Age, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 2 × 5</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="do">##   Gender mean_age median_age max_age min_age</span></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="do">##   &lt;chr&gt;     &lt;dbl&gt;      &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;</span></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a><span class="do">## 1 Female     48.6       44.5      12      86</span></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a><span class="do">## 2 Male       53.3       50        15      85</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>It doesn’t appear that there are any differences in the age distribution of female and male cases based on what we see here.</p>
+</section>
+<section id="number-and-proportions-of-female-vs.-male-cases" class="level4">
+<h4 class="anchored" data-anchor-id="number-and-proportions-of-female-vs.-male-cases">Number and proportions of female vs.&nbsp;male cases</h4>
+<p>Next, let’s tally the total number of female and male cases, and calculate their proportions as well.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>symptoms_manifest <span class="sc">%&gt;%</span> </span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Gender) <span class="sc">%&gt;%</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">Total =</span> <span class="fu">n</span>(),</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">Proportion =</span> <span class="fu">n</span>()<span class="sc">/</span><span class="fu">sum</span>(Total))</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 2 × 3</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="do">##   Gender Total Proportion</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="do">##   &lt;chr&gt;  &lt;int&gt;      &lt;dbl&gt;</span></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="do">## 1 Female    40          1</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="do">## 2 Male      29          1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Whoops! What do you notice above about our results? The proportion is returning the total number of female cases out of the total number of female cases, and vice-versa for males. This is because our .groups remain in effect in the summarize() function until we say otherwise. To get the correct proportions, we’ll need to adjust our code.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>symptoms_manifest <span class="sc">%&gt;%</span> </span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Gender) <span class="sc">%&gt;%</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">Total =</span> <span class="fu">n</span>(), <span class="at">.groups =</span> <span class="st">"drop"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Proportion =</span> Total <span class="sc">/</span> <span class="fu">sum</span>(Total))</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 2 × 3</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="do">##   Gender Total Proportion</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="do">##   &lt;chr&gt;  &lt;int&gt;      &lt;dbl&gt;</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="do">## 1 Female    40      0.580</span></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a><span class="do">## 2 Male      29      0.420</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>In the above summarize() call, we’ve told R that groups should be dropped in the result, and then used the <code>Total</code> variable to mutate a new variable that returns the proportion of the sum of the total for each female and male cases. This time, it works as expected.</p>
+</section>
+<section id="cases-reporting-with-fever" class="level4">
+<h4 class="anchored" data-anchor-id="cases-reporting-with-fever">Cases reporting with Fever</h4>
+<p>For this one, we’ll use mutate a new variable called “Fever” based on the temperature values, and then calculate the summaries based on that. Let’s go with anything over 38 degrees constituting a fever.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>symptoms_manifest <span class="ot">&lt;-</span> </span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  symptoms_manifest <span class="sc">%&gt;%</span> </span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Fever =</span> <span class="fu">case_when</span>(</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>    pass.temp <span class="sc">&gt;</span> <span class="fl">38.0</span> <span class="sc">~</span> <span class="dv">1</span>, </span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>    pass.temp <span class="sc">&lt;=</span> <span class="fl">38.0</span> <span class="sc">~</span> <span class="dv">0</span>, </span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> <span class="cn">NA</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>  ))</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>symptoms_manifest <span class="sc">%&gt;%</span> </span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(Fever)</span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 2 × 2</span></span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a><span class="do">##   Fever     n</span></span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a><span class="do">##   &lt;dbl&gt; &lt;int&gt;</span></span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a><span class="do">## 1     0    31</span></span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a><span class="do">## 2     1    38</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Hmm. Interesting - a little over half of our cases with abdominal pain were running a fever. Lets create some age groupings so that we can look a little more closely at age breakdowns.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>symptoms_manifest <span class="ot">&lt;-</span> </span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>symptoms_manifest <span class="sc">%&gt;%</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">age.group =</span> <span class="fu">case_when</span>(</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>      Age <span class="sc">&lt;</span> <span class="dv">12</span> <span class="sc">~</span> <span class="st">"0–11"</span>,</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>      Age <span class="sc">&lt;</span> <span class="dv">18</span> <span class="sc">~</span> <span class="st">"12–17"</span>,</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>      Age <span class="sc">&lt;</span> <span class="dv">30</span> <span class="sc">~</span> <span class="st">"18–29"</span>,</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>      Age <span class="sc">&lt;</span> <span class="dv">50</span> <span class="sc">~</span> <span class="st">"30–49"</span>,</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>      Age <span class="sc">&lt;</span> <span class="dv">65</span> <span class="sc">~</span> <span class="st">"50–64"</span>,</span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>      Age <span class="sc">&gt;=</span> <span class="dv">65</span> <span class="sc">~</span> <span class="st">"65+"</span>,</span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>      <span class="cn">TRUE</span> <span class="sc">~</span> <span class="cn">NA</span></span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>symptoms_manifest <span class="sc">%&gt;%</span></span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(age.group) <span class="sc">%&gt;%</span></span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(Fever)</span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 8 × 3</span></span>
+<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a><span class="do">## # Groups:   age.group [5]</span></span>
+<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a><span class="do">##   age.group Fever     n</span></span>
+<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a><span class="do">##   &lt;chr&gt;     &lt;dbl&gt; &lt;int&gt;</span></span>
+<span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a><span class="do">## 1 12–17         0     2</span></span>
+<span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a><span class="do">## 2 18–29         1     4</span></span>
+<span id="cb18-25"><a href="#cb18-25" aria-hidden="true" tabindex="-1"></a><span class="do">## 3 30–49         0    12</span></span>
+<span id="cb18-26"><a href="#cb18-26" aria-hidden="true" tabindex="-1"></a><span class="do">## 4 30–49         1    18</span></span>
+<span id="cb18-27"><a href="#cb18-27" aria-hidden="true" tabindex="-1"></a><span class="do">## 5 50–64         0     9</span></span>
+<span id="cb18-28"><a href="#cb18-28" aria-hidden="true" tabindex="-1"></a><span class="do">## 6 50–64         1     7</span></span>
+<span id="cb18-29"><a href="#cb18-29" aria-hidden="true" tabindex="-1"></a><span class="do">## 7 65+           0     8</span></span>
+<span id="cb18-30"><a href="#cb18-30" aria-hidden="true" tabindex="-1"></a><span class="do">## 8 65+           1     9</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>It looks like ages 30-49 were experiencing fever most frequently. Does this give us any clues at this stage as to what we might be dealing with? Why or why not?</p>
+</div>
+</div>
+<p>Now let’s look at our remaining symptoms by gender and by age group:</p>
+<ul>
+<li>Vomiting</li>
+<li>Diarrhea</li>
+<li>Headache</li>
+<li>Bloody Stool</li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>symptoms_manifest <span class="sc">%&gt;%</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Gender) <span class="sc">%&gt;%</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">Vomit =</span> <span class="fu">sum</span>(vomiting),</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">Diarrhea =</span> <span class="fu">sum</span>(diarrhea),</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">Headache =</span> <span class="fu">sum</span>(headache), </span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">Bloody.Stool =</span> <span class="fu">sum</span>(bloody.stool)</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 2 × 5</span></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a><span class="do">##   Gender Vomit Diarrhea Headache Bloody.Stool</span></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a><span class="do">##   &lt;chr&gt;  &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;        &lt;dbl&gt;</span></span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a><span class="do">## 1 Female    32       39       31           19</span></span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a><span class="do">## 2 Male      24       27       23           12</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>symptoms_manifest <span class="sc">%&gt;%</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(age.group) <span class="sc">%&gt;%</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">Vomit =</span> <span class="fu">sum</span>(vomiting),</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">Diarrhea =</span> <span class="fu">sum</span>(diarrhea),</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">Headache =</span> <span class="fu">sum</span>(headache), </span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">Bloody.Stool =</span> <span class="fu">sum</span>(bloody.stool)</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 5 × 5</span></span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a><span class="do">##   age.group Vomit Diarrhea Headache Bloody.Stool</span></span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a><span class="do">##   &lt;chr&gt;     &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;        &lt;dbl&gt;</span></span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a><span class="do">## 1 12–17         2        2        2            0</span></span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a><span class="do">## 2 18–29         3        4        3            4</span></span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a><span class="do">## 3 30–49        24       29       23           13</span></span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a><span class="do">## 4 50–64        15       14       12            5</span></span>
+<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a><span class="do">## 5 65+          12       17       14            9</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Have a look at the results of the symptom breakdown by gender and age. Does anything stand out to you? Why or why not? What age ranges are the majority of your cases in? Is this any different than the general population on the ship?</p>
+</section>
+<section id="symptom-onset-dates" class="level4">
+<h4 class="anchored" data-anchor-id="symptom-onset-dates">Symptom onset dates</h4>
+<p>We’ll take a look next at symptom onset dates, and see if there’s any discernible pattern that we can identify from the summaries.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>symptoms_manifest <span class="sc">%&gt;%</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(onset.date) <span class="sc">%&gt;%</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>() </span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 5 × 2</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="do">## # Groups:   onset.date [5]</span></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a><span class="do">##   onset.date     n</span></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a><span class="do">##   &lt;date&gt;     &lt;int&gt;</span></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a><span class="do">## 1 2025-02-10     4</span></span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a><span class="do">## 2 2025-02-11    22</span></span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a><span class="do">## 3 2025-02-12    28</span></span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a><span class="do">## 4 2025-02-13    13</span></span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a><span class="do">## 5 2025-02-14     2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Are you starting to see a pattern here? These numbers appear to read very much like an outbreak curve typical of a point-source exposure.</p>
+<p>Let’s plot these numbers using the ggplot() function so that we can have a quick visualization.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This course is not intended for training an in-depth focus on data visualizations, as that is the focus of another of <a href="https://github.com/hc-sc/tdu-datavizr" title="Link to Github: TDU R for Data Visualizations">TDU’s trainings: R for Data Visualization</a>. In this module, we’ll introduce the very basics of summarizing data and generating a simple plot, but if you wish to read further, there are many resources available for you to learn on your own!</p>
+<ul>
+<li><p><a href="https://r4ds.hadley.nz/visualize.html" title="Link to free book: R for Data Science, Second edition">R for Data Science (R4DS) - Visualize</a></p></li>
+<li><p><a href="https://ggplot2.tidyverse.org/" title="Link to reference page for ggplot2">The grammar of graphics (ggplot2) reference page</a></p></li>
+</ul>
+<p>If you’re ever looking for inspiration, here’s a link to a large collection of extensions for making ggplot2 even more powerful as a data visualization tool:</p>
+<ul>
+<li><a href="https://exts.ggplot2.tidyverse.org/gallery/" title="A link to ggplot2 extensions">Ggplot2 extensions gallery</a></li>
+</ul>
+</div>
+</div>
+<p>To keep things simple for now, we’ll be using a very simple ggplot to look at the distribution of cases over time. We can easily incorporate this into our summary statement using the pipe operator <code>%&gt;%</code>.</p>
+<p>For this ggplot, you’ll need to specify the following arguments:</p>
+<ul>
+<li><p><code>aes()</code> - the chart aesthetics (which variables should map to x and y on the chart?)</p></li>
+<li><p><code>geom_col()</code> - the type of chart that we’d like to produce.</p></li>
+</ul>
+<p>Since we’re already summarizing the data using our <code>summarize()</code> function, we’ll apply a <code>geom_col()</code> layer to visualize the summary as columns. If we were going to let ggplot do the summary for us, we could instead feed our raw data into the function, and use the <code>geom_bar()</code> argument.</p>
+<p><strong>Note that once ggplot has been called, additional layers to the chart must be chained using the <code>+</code> operator, not the <code>%&gt;%</code> operator.</strong></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>symptoms_manifest <span class="sc">%&gt;%</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(onset.date) <span class="sc">%&gt;%</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> onset.date, <span class="at">y =</span> n)) <span class="sc">+</span> </span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="module03_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>While there are many improvements that could be made to this chart, it does confirm our suspicions about the shape of the distribution of cases, this is definitely looking like the ship has experienced a point-source outbreak!</p>
+</section>
+<section id="further-exploring-the-dataset" class="level3">
+<h3 class="anchored" data-anchor-id="further-exploring-the-dataset">Further exploring the dataset</h3>
+<p>Luckily, at this stage, the outbreak appears to be in decline, and may even be over. However, as epidemiologists, we know that if we don’t identify the source of the illnesses, then they could occur again. Using our data-swashbuckling abilities - we have uncovered a number of very strong clues in this scenario so far.</p>
+<p>Take a couple of minutes to summarize, from an epidemiological perspective, what you have learned about the cases and illnesses aboard the <strong>S. S. Rainbow Cake</strong> so far. This may help to hone your focus on where to investigate next!</p>
+<details>
+<summary>
+<strong>Click to see the present clues in the investigation</strong>
+</summary>
+<p>Here’s some of the main considerations so far:</p>
+<ul>
+<li>There is a very strong point-source outbreak signal. We should be thinking about exposures that may have occurred at a single setting (e.g., meals, events).</li>
+<li>While all of our cases reported abdominal pain / discomfort, there are some that have reported much more serious symptoms. We may want to investigate these further.</li>
+<li>There does not appear to be any strong signals based on age and sex of cases.</li>
+<li>We are on a cruise ship and historically, gastrointestinal outbreaks cause by contaminated food are a common occurrence.</li>
+</ul>
+</details>
+<section id="differences-in-symptoms-by-onset-date" class="level4">
+<h4 class="anchored" data-anchor-id="differences-in-symptoms-by-onset-date">Differences in symptoms by onset date</h4>
+<p>Let’s go back to our symptoms and see if there are any differences in the symptoms by onset date. This time, we’ll summarize all of different symptoms by date using a clever little function called <code>across()</code>.</p>
+<p>The <code>across()</code> function works within either a mutate() or summarize() call, and allows you to repeat the same operation on a range of variables, rather than having to type them in over and over again. Here, we’ll use it to sum up the number of cases that reported each symptom for each each day in our dataset.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>symptoms_manifest <span class="sc">%&gt;%</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(onset.date) <span class="sc">%&gt;%</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">across</span>(</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>      <span class="fu">c</span>(vomiting, diarrhea, headache, bloody.stool, Fever),</span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>      <span class="sc">~</span> <span class="fu">sum</span>(.x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>      )</span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 5 × 6</span></span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a><span class="do">##   onset.date vomiting diarrhea headache bloody.stool Fever</span></span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a><span class="do">##   &lt;date&gt;        &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;        &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a><span class="do">## 1 2025-02-10        3        4        3            1     1</span></span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a><span class="do">## 2 2025-02-11       19       21       17            8    11</span></span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a><span class="do">## 3 2025-02-12       22       27       24           17    20</span></span>
+<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a><span class="do">## 4 2025-02-13       10       12        9            5     6</span></span>
+<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a><span class="do">## 5 2025-02-14        2        2        1            0     0</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Do you notice any differences between the numbers of passengers reporting symptoms? Why might vomiting, diarrhea, and headache be reported less often than the more severe symptoms of bloody stool and fever. What types of gastrointestinal diseases might cause bloody stool and fever?</p>
+</div>
+</div>
+</section>
+<section id="differences-in-symptoms-by-other-variables" class="level4">
+<h4 class="anchored" data-anchor-id="differences-in-symptoms-by-other-variables">Differences in symptoms by other variables</h4>
+<p>If you recall, there are still two variables in our dataset that we haven’t taken a look at yet:</p>
+<ol type="1">
+<li>Member Status</li>
+<li>Boarding Date</li>
+</ol>
+<p>Let’s leave no stones unturned, and see if we can identify any differences between the passenger’s symptoms and either their cruise-member-status or the day that they boarded the ship. Since bloody stool and fever are definitely the greater cause for concern, we’ll focus on those symptoms only.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>symptoms_manifest <span class="sc">%&gt;%</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(<span class="st">`</span><span class="at">Member Status</span><span class="st">`</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">across</span>(</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>      <span class="fu">c</span>(bloody.stool, Fever),</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>      <span class="sc">~</span> <span class="fu">sum</span>(.x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>      )</span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 3 × 3</span></span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a><span class="do">##   `Member Status` bloody.stool Fever</span></span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a><span class="do">##   &lt;chr&gt;                  &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a><span class="do">## 1 Gold                       3     6</span></span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a><span class="do">## 2 Platinum                   3     4</span></span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a><span class="do">## 3 Silver                    25    28</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>symptoms_manifest <span class="sc">%&gt;%</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(<span class="st">`</span><span class="at">Boarding Date</span><span class="st">`</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">across</span>(</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>      <span class="fu">c</span>(bloody.stool, Fever),</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>      <span class="sc">~</span> <span class="fu">sum</span>(.x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>      )</span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 2 × 3</span></span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a><span class="do">##   `Boarding Date`     bloody.stool Fever</span></span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a><span class="do">##   &lt;dttm&gt;                     &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a><span class="do">## 1 2025-02-09 00:00:00           31    38</span></span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a><span class="do">## 2 2025-02-10 00:00:00            0     0</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Whoa! Did you just crack the outbreak code here!? There definitely looks to be something going on related to the <strong>date that passengers boarded the ship</strong>, as well as potentially their <strong>cruise-member-status</strong>.</p>
+<p>Excellent epi-investigative skills!</p>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="summary-and-quiz" class="level2">
+<h2 class="anchored" data-anchor-id="summary-and-quiz">Summary and quiz</h2>
+<section id="summary" class="level3">
+<h3 class="anchored" data-anchor-id="summary">Summary</h3>
+<p>Wow! You really covered a lot in this module - give yourself a well-earned pat on the back!</p>
+<p>You managed to do all of the following, using only tidyverse functions:</p>
+<ol type="1">
+<li>Joining multiple datasets using aggregation functions</li>
+<li>Joining multiple datasets using table-joins</li>
+<li>Manipulating the shapes of datasets using pivot functions</li>
+<li>Separating complex strings and creating new variables</li>
+<li>Summarizing data using summary()</li>
+<li>Creating a basic epidemiological curve</li>
+<li>Applying the across() function to summarize with multiple variables at once</li>
+</ol>
+<p>That’s a lot! We even managed to sneak a small preview of regular expressions in there!</p>
+</section>
+<section id="quiz" class="level3">
+<h3 class="anchored" data-anchor-id="quiz">Quiz</h3>
+<p>Let’s do a quick review of the <strong>Tidyverse functions</strong> we used in this module:</p>
+<style>
+/* Strong reset for quiz elements so theme CSS doesn't interfere */
+.quiz, .quiz * { box-sizing: border-box; }
+
+/* Layout for each choice: radio + text */
+.quiz .choice {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 6px;
+  line-height: 1.25;
+}
+
+/* Ensure the input does not collapse or overlap text */
+.quiz .choice input[type="radio"] {
+  flex: 0 0 auto;
+  min-width: 1.05rem;
+  min-height: 1.05rem;
+  width: 1.05rem;
+  height: 1.05rem;
+  transform: scale(1.05);
+  margin: 0;            /* remove theme margins that can misalign */
+  vertical-align: middle;
+}
+
+/* Text next to radio - wraps correctly */
+.quiz .choice span {
+  flex: 1 1 auto;
+  display: block;
+  word-break: break-word;
+  margin-left: 0;       /* guard against theme padding on labels */
+}
+
+/* Buttons / spacing */
+.quiz button {
+  margin-top: 6px;
+  margin-bottom: 12px;
+}
+
+/* Feedback styling */
+.quiz .feedback {
+  margin-top: 6px;
+  font-weight: 600;
+}
+</style>
+<div class="quiz">
+<!-- Q1 -->
+<p>
+<strong>1. You are given five daily <code>abdo_</code> datasets with identical columns. Which function is most appropriate for combining them into a single dataset by stacking rows?</strong>
+</p>
+<p><label class="choice"><input type="radio" name="q1" value="A">left_join(), because it preserves all rows</label> <label class="choice"><input type="radio" name="q1" value="B">bind_rows(), because the datasets have the same structure</label> <label class="choice"><input type="radio" name="q1" value="C">pivot_longer(), because it reshapes multiple datasets</label> <button onclick="check('q1','B')">Submit</button></p>
+<p id="q1-feedback" class="feedback">
+</p>
+<hr>
+<!-- Q2 -->
+<p>
+<strong>2. In <code>bind_rows(…, .id = “id”)</code>, what does the <code>.id</code> argument capture?</strong>
+</p>
+<p><label class="choice"><input type="radio" name="q2" value="A">A unique row number for each observation</label> <label class="choice"><input type="radio" name="q2" value="B">The source dataset each row came from</label> <label class="choice"><input type="radio" name="q2" value="C">The primary key used for later joins</label> <button onclick="check('q2','B')">Submit</button></p>
+<p id="q2-feedback" class="feedback">
+</p>
+<hr>
+<!-- Q3 -->
+<p>
+<strong>3. Why was <code>skip = 4</code> used when importing the abdo datasets with <code>read_tsv()</code>?</strong>
+</p>
+<p><label class="choice"><input type="radio" name="q3" value="A">To remove the first four rows containing metadata rather than data</label> <label class="choice"><input type="radio" name="q3" value="B">To skip missing values at the top of the file</label> <label class="choice"><input type="radio" name="q3" value="C">To improve import speed for large files</label> <button onclick="check('q3','A')">Submit</button></p>
+<p id="q3-feedback" class="feedback">
+</p>
+<hr>
+<!-- Q4 -->
+<p>
+<strong>4. Why was <code>case_when()</code> used instead of <code>if_else()</code> when creating new variables?</strong>
+</p>
+<p><label class="choice"><input type="radio" name="q4" value="A"><code>case_when()</code> allows multiple conditional rules to be applied in order</label> <label class="choice"><input type="radio" name="q4" value="B"><code>case_when()</code> is faster for numeric variables</label> <label class="choice"><input type="radio" name="q4" value="C"><code>if_else()</code> cannot be used inside <code>mutate()</code></label> <button onclick="check('q4','A')">Submit</button></p>
+<p id="q4-feedback" class="feedback">
+</p>
+<hr>
+<!-- Q5 -->
+<p>
+<strong>5. Why is it good practice to remove the temporary <code>id</code> variable before joining datasets?</strong>
+</p>
+<p><label class="choice"><input type="radio" name="q5" value="A">It reduces file size and improves performance</label> <label class="choice"><input type="radio" name="q5" value="B">It prevents accidental use of the variable in joins or analyses</label> <label class="choice"><input type="radio" name="q5" value="C">Joins will fail if extra columns are present</label> <button onclick="check('q5','B')">Submit</button></p>
+<p id="q5-feedback" class="feedback">
+</p>
+<hr>
+<!-- Q6 -->
+<p>
+<strong>6. Why was <code>left_join()</code> used to join the abdo data to the passenger manifest?</strong>
+</p>
+<p><label class="choice"><input type="radio" name="q6" value="A">To keep all passengers, even if no abdo record exists</label> <label class="choice"><input type="radio" name="q6" value="B">To keep only passengers with abdo symptoms</label> <label class="choice"><input type="radio" name="q6" value="C">Because left_join() automatically removes duplicates</label> <button onclick="check('q6','A')">Submit</button></p>
+<p id="q6-feedback" class="feedback">
+</p>
+<hr>
+<!-- Q7 -->
+<p>
+<strong>7. What problem does <code>by = c(“pass.ID” = “Pass_ID”)</code> solve in a join?</strong>
+</p>
+<p><label class="choice"><input type="radio" name="q7" value="A">It converts character IDs to numeric</label> <label class="choice"><input type="radio" name="q7" value="B">It allows joining on variables with different names</label> <label class="choice"><input type="radio" name="q7" value="C">It ensures only unique IDs are matched</label> <button onclick="check('q7','B')">Submit</button></p>
+<p id="q7-feedback" class="feedback">
+</p>
+<hr>
+<!-- Q8 -->
+<p>
+<strong>8. What does <code>separate_rows(CEDIS, sep = “;”)</code> do?</strong>
+</p>
+<p><label class="choice"><input type="radio" name="q8" value="A">Splits a single row into multiple rows based on CEDIS codes</label> <label class="choice"><input type="radio" name="q8" value="B">Creates new columns for each CEDIS code</label> <label class="choice"><input type="radio" name="q8" value="C">Removes duplicate CEDIS values</label> <button onclick="check('q8','A')">Submit</button></p>
+<p id="q8-feedback" class="feedback">
+</p>
+<hr>
+<!-- Q9 -->
+<p>
+<strong>9. Why is <code>separate_rows()</code> typically applied before <code>pivot_wider()</code> in this workflow?</strong>
+</p>
+<p><label class="choice"><input type="radio" name="q9" value="A">To ensure one value per row before creating indicator columns</label> <label class="choice"><input type="radio" name="q9" value="B">To reduce the number of columns created</label> <label class="choice"><input type="radio" name="q9" value="C">To convert character variables into factors</label> <button onclick="check('q9','A')">Submit</button></p>
+<p id="q9-feedback" class="feedback">
+</p>
+<hr>
+<!-- Q10 -->
+<p>
+<strong>10. What assumption does <code>pivot_wider()</code> make about the data when creating new columns?</strong>
+</p>
+<p><label class="choice"><input type="radio" name="q10" value="A">Each ID–value combination is unique</label> <label class="choice"><input type="radio" name="q10" value="B">All values are numeric</label> <label class="choice"><input type="radio" name="q10" value="C">There are no missing values</label> <button onclick="check('q10','A')">Submit</button></p>
+<p id="q10-feedback" class="feedback">
+</p>
+<hr>
+<!-- Q11 -->
+<p>
+<strong>11. If multiple rows exist for the same ID and symptom, which <code>pivot_wider()</code> argument can be used to resolve this?</strong>
+</p>
+<p><label class="choice"><input type="radio" name="q11" value="A"><code>values_fn</code></label> <label class="choice"><input type="radio" name="q11" value="B"><code>names_sep</code></label> <label class="choice"><input type="radio" name="q11" value="C"><code>id_expand</code></label> <button onclick="check('q11','A')">Submit</button></p>
+<p id="q11-feedback" class="feedback">
+</p>
+<hr>
+<!-- Q12 -->
+<p>
+<strong>12. What is the primary purpose of using <code>values_fill</code> in <code>pivot_wider()</code>?</strong>
+</p>
+<p><label class="choice"><input type="radio" name="q12" value="A">To replace missing combinations with a default value</label> <label class="choice"><input type="radio" name="q12" value="B">To remove rows with missing data</label> <label class="choice"><input type="radio" name="q12" value="C">To convert logical values to numeric</label> <button onclick="check('q12','A')">Submit</button></p>
+<p id="q12-feedback" class="feedback">
+</p>
+<hr>
+<!-- Q13 -->
+<p>
+<strong>13. Why is it often useful to create symptom variables as 0/1 indicators?</strong>
+</p>
+<p><label class="choice"><input type="radio" name="q13" value="A">They support straightforward summarization and modeling</label> <label class="choice"><input type="radio" name="q13" value="B">They reduce memory usage in all cases</label> <label class="choice"><input type="radio" name="q13" value="C">They prevent duplicate rows from occurring</label> <button onclick="check('q13','A')">Submit</button></p>
+<p id="q13-feedback" class="feedback">
+</p>
+<hr>
+<!-- Q14 -->
+<p>
+<strong>14. What advantage does using <code>across()</code> inside <code>summarize()</code> provide?</strong>
+</p>
+<p><label class="choice"><input type="radio" name="q14" value="A">It allows the same summary operation to be applied to many variables at once</label> <label class="choice"><input type="radio" name="q14" value="B">It automatically reshapes the dataset</label> <label class="choice"><input type="radio" name="q14" value="C">It replaces the need for grouping variables</label> <button onclick="check('q14','A')">Submit</button></p>
+<p id="q14-feedback" class="feedback">
+</p>
+<hr>
+<!-- Q15 -->
+<p>
+<strong>15. Why is inspecting the data with functions like <code>glimpse()</code> important before and after joins?</strong>
+</p>
+<p><label class="choice"><input type="radio" name="q15" value="A">To verify structure, variable types, and unexpected changes</label> <label class="choice"><input type="radio" name="q15" value="B">To permanently modify the dataset</label> <label class="choice"><input type="radio" name="q15" value="C">To optimize joins for performance</label> <button onclick="check('q15','A')">Submit</button></p>
+<p id="q15-feedback" class="feedback">
+</p>
+</div>
+<script>
+function check(questionName, correctValue) {
+  const answer = document.querySelector(`input[name="${questionName}"]:checked`)?.value;
+  const feedback = document.getElementById(`${questionName}-feedback`);
+
+  if (!answer) {
+    feedback.textContent = "Please select an option.";
+    feedback.style.color = "orange";
+    return;
+  }
+
+  if (answer === correctValue) {
+    feedback.textContent = "Correct! ✔️";
+    feedback.style.color = "green";
+  } else {
+    feedback.textContent = "Incorrect. Try again.";
+    feedback.style.color = "red";
+  }
+}
+</script>
+
+
+</section></section></main></div>
+
+
+
+ <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/hc-sc\.github\.io\/tdu-rph\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+ <!-- /content -->
+
+
+
+
+</body></html>

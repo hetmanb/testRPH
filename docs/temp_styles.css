@@ -1,0 +1,142 @@
+/* ================================
+   Global Look & Feel
+   Teal + Blue PHAC-style accents
+   ================================ */
+
+/* Light background tint */
+body {
+  background-color: #f7fbfc; /* subtle very light teal */
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  color: #0f5f73; /* dark teal */
+  font-weight: 700;
+}
+
+h1.title, h1, .title{
+  
+font-size: 4rem !important;
+}
+
+/* Links */
+a {
+  color: #1d7ea7; /* blue-teal */
+}
+a:hover {
+  color: #14556f;
+  text-decoration: underline;
+}
+
+
+
+
+/* ================================
+   Navbar
+   ================================ */
+
+
+.navbar {
+  background-color: #orange !important;
+}
+
+/* Navbar link color */
+.navbar .navbar-nav .nav-link {
+  color: white !important;
+}
+
+/* Active link color */
+.navbar .navbar-nav .nav-link.active {
+  color: grey !important;
+}
+
+
+
+/* ================================
+   Sidebar & TOC
+   ================================ */
+
+/* Sidebar background */
+.sidebar {
+  background-color: #eaf4f6 !important;
+  /*border-right: 2px solid #d2e6ea; */
+}
+
+/* Active TOC item */
+.sidebar .active > a,
+.sidebar nav a:hover {
+  color: #0f5f73 !important;
+  font-weight: bold;
+}
+
+/* ================================
+   Title Banner
+   ================================ */
+.quarto-title-block .quarto-title {
+  /*background: linear-gradient(90deg, #1d7ea7, #0f5f73); 
+  color: #ffffff;
+  padding: 1.4em;
+  border-radius: 12px;*/
+}
+
+/* ================================
+   Code Blocks
+   ================================ */
+
+pre, code {
+  border-radius: 6px;
+}
+
+pre {
+  background-color: #edf6f8 !important;
+  border: 1px solid #d4e7ea !important;
+}
+
+/* ================================
+   Tables
+   ================================ */
+
+table {
+  border: 1px solid #d4e7ea;
+}
+
+table th {
+  background-color: #e1f1f4;
+  color: #0f5f73;
+  font-weight: 700;
+}
+
+/* ================================
+   Callouts
+   Boost color slightly for visibility
+   ================================ */
+
+.callout.callout-tip {
+  border-left-color: #0f9d58;
+}
+
+.callout.callout-note {
+  border-left-color: #1d7ea7;
+}
+
+.callout.callout-warning {
+  border-left-color: #eab308;
+}
+
+.callout.callout-important {
+  border-left-color: #e63946;
+}
+
+/* ================================
+   Misc UI Elements
+   ================================ */
+
+/* Buttons (if used) */
+.btn-primary {
+  background-color: #1d7ea7;
+  border-color: #1d7ea7;
+}
+.btn-primary:hover {
+  background-color: #14556f;
+  border-color: #14556f;
+}
